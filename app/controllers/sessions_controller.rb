@@ -7,7 +7,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
 
     else
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
+    end
   end
 
   def destroy
